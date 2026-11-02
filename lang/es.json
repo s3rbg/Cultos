@@ -1,0 +1,33 @@
+{
+  "TYPES": {
+    "Actor": {
+      "personaje": "Personaje",
+      "pnj": "PNJ"
+    },
+    "Item": {
+      "habilidad": "Habilidad",
+      "equipo": "Equipo"
+    }
+  },
+  "CULTOS": {
+    "Crear": "Crear",
+    "Sheet": {
+      "Actor": "Hoja de Cultos Innombrables",
+      "Item": "Hoja de objeto de Cultos Innombrables"
+    },
+    "Actor": {
+      "FIELDS": {
+        "salud": { "label": "Salud", "value": { "label": "Actual" }, "max": { "label": "Máximo" } },
+        "concepto": { "label": "Concepto" },
+        "biografia": { "label": "Biografía" }
+      }
+    },
+    "Item": {
+      "FIELDS": {
+        "valor": { "label": "Valor" },
+        "cantidad": { "label": "Cantidad" },
+        "descripcion": { "label": "Descripción" }
+      }
+    }
+  }
+}

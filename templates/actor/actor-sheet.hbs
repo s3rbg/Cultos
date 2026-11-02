@@ -1,0 +1,54 @@
+<section class="cultos-sheet">
+  <header class="sheet-header">
+    <img class="profile" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}" />
+    <div class="header-fields">
+      <input class="nombre" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'Name'}}" />
+      {{#if fields.concepto}}
+        {{formGroup fields.concepto value=system.concepto localize=true}}
+      {{/if}}
+      <div class="salud">
+        <label>{{localize "CULTOS.Actor.FIELDS.salud.label"}}</label>
+        <input type="number" name="system.salud.value" value="{{system.salud.value}}" />
+        <span>/</span>
+        <input type="number" name="system.salud.max" value="{{system.salud.max}}" />
+      </div>
+    </div>
+  </header>
+
+  <section class="items">
+    <h3>
+      {{localize "TYPES.Item.habilidad"}}
+      <a data-action="crearItem" data-type="habilidad" data-tooltip="{{localize 'CULTOS.Crear'}}"><i class="fas fa-plus"></i></a>
+    </h3>
+    <ul class="item-list">
+      {{#each habilidades as |item|}}
+        <li class="item" data-item-id="{{item.id}}">
+          <span class="item-name">{{item.name}}</span>
+          <span class="item-valor">{{item.system.valor}}</span>
+          <a data-action="editarItem"><i class="fas fa-edit"></i></a>
+          <a data-action="borrarItem"><i class="fas fa-trash"></i></a>
+        </li>
+      {{/each}}
+    </ul>
+
+    <h3>
+      {{localize "TYPES.Item.equipo"}}
+      <a data-action="crearItem" data-type="equipo" data-tooltip="{{localize 'CULTOS.Crear'}}"><i class="fas fa-plus"></i></a>
+    </h3>
+    <ul class="item-list">
+      {{#each equipo as |item|}}
+        <li class="item" data-item-id="{{item.id}}">
+          <span class="item-name">{{item.name}}</span>
+          <span class="item-valor">×{{item.system.cantidad}}</span>
+          <a data-action="editarItem"><i class="fas fa-edit"></i></a>
+          <a data-action="borrarItem"><i class="fas fa-trash"></i></a>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+
+  <section class="biografia">
+    <h3>{{localize "CULTOS.Actor.FIELDS.biografia.label"}}</h3>
+    <prose-mirror name="system.biografia" value="{{system.biografia}}" toggled="true">{{{biografiaHTML}}}</prose-mirror>
+  </section>
+</section>

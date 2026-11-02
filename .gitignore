@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+packs/**/LOCK
+packs/**/*.ldb
+packs/**/LOG*
+packs/**/MANIFEST-*
+packs/**/CURRENT

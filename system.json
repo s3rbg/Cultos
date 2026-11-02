@@ -1,0 +1,31 @@
+{
+  "id": "cultos-innombrables",
+  "title": "Cultos Innombrables",
+  "description": "Sistema no oficial de Cultos Innombrables para Foundry VTT (uso personal).",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "authors": [
+    { "name": "Sergio Blanco" }
+  ],
+  "esmodules": ["module/cultos.mjs"],
+  "styles": ["styles/cultos.css"],
+  "languages": [
+    { "lang": "es", "name": "Español", "path": "lang/es.json" }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "personaje": { "htmlFields": ["biografia"] },
+      "pnj": { "htmlFields": ["biografia"] }
+    },
+    "Item": {
+      "habilidad": { "htmlFields": ["descripcion"] },
+      "equipo": { "htmlFields": ["descripcion"] }
+    }
+  },
+  "grid": { "distance": 1, "units": "m" },
+  "primaryTokenAttribute": "salud",
+  "socket": false
+}

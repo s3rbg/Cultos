@@ -1,0 +1,56 @@
+/* Cultos Innombrables — estilos base */
+.cultos .cultos-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cultos .sheet-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.cultos .sheet-header .profile {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: none;
+  cursor: pointer;
+}
+
+.cultos .sheet-header .header-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cultos .sheet-header .nombre {
+  font-size: 1.5rem;
+  height: auto;
+}
+
+.cultos .salud {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.cultos .salud input { width: 4rem; text-align: center; }
+
+.cultos h3 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border, #999);
+}
+
+.cultos .item-list { list-style: none; margin: 0; padding: 0; }
+.cultos .item-list .item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.2rem 0;
+}
+.cultos .item-list .item-name { flex: 1; }
+
+.cultos prose-mirror { min-height: 150px; }

@@ -1,0 +1,13 @@
+<section class="cultos-sheet">
+  <header class="sheet-header">
+    <img class="profile" src="{{item.img}}" data-edit="img" data-action="editImage" alt="{{item.name}}" />
+    <div class="header-fields">
+      <input class="nombre" type="text" name="name" value="{{item.name}}" />
+      {{#if fields.valor}}{{formGroup fields.valor value=system.valor localize=true}}{{/if}}
+      {{#if fields.cantidad}}{{formGroup fields.cantidad value=system.cantidad localize=true}}{{/if}}
+    </div>
+  </header>
+  <section class="descripcion">
+    <prose-mirror name="system.descripcion" value="{{system.descripcion}}" toggled="true">{{{descripcionHTML}}}</prose-mirror>
+  </section>
+</section>

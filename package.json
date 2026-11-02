@@ -1,0 +1,16 @@
+{
+  "name": "cultos-innombrables",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema de Cultos Innombrables para Foundry VTT",
+  "type": "module",
+  "scripts": {
+    "link": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/link.ps1",
+    "lint": "eslint module"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0"
+  }
+}
