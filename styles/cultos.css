@@ -31,13 +31,6 @@
   height: auto;
 }
 
-.cultos .salud {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-.cultos .salud input { width: 4rem; text-align: center; }
-
 .cultos h3 {
   display: flex;
   justify-content: space-between;
@@ -54,3 +47,94 @@
 .cultos .item-list .item-name { flex: 1; }
 
 .cultos prose-mirror { min-height: 150px; }
+
+/* Rasgos: nombre · valor · aspecto · gastado */
+.cultos .rasgo-list { list-style: none; margin: 0 0 0.5rem; padding: 0; }
+.cultos .rasgo {
+  display: grid;
+  grid-template-columns: 9rem 3.5rem 1fr auto;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.15rem 0;
+}
+.cultos .narrativa .rasgo { grid-template-columns: 1fr auto; }
+.cultos .narrativa .rasgo:has(.rasgo-nombre) { grid-template-columns: 9rem 1fr auto; }
+.cultos .rasgo-valor { text-align: center; }
+
+.cultos .rasgo.gastado .rasgo-aspecto { text-decoration: line-through; opacity: 0.6; }
+
+.cultos .estado { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.cultos .contador { display: flex; align-items: center; gap: 0.25rem; }
+.cultos .contador label { flex: 1; }
+.cultos .contador input { width: 4rem; text-align: center; }
+
+/* Aspectos de habilidad agrupados */
+.cultos .habilidad-grupo h4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0 0.1rem;
+  font-weight: bold;
+}
+.cultos .habilidad-grupo.no-basica h4 span { font-style: italic; }
+.cultos .rasgo.aspecto { grid-template-columns: auto 1fr 3.5rem auto auto auto; padding-left: 0.75rem; }
+.cultos .rasgo .tirar { font-size: 1.1em; }
+
+/* Diálogo y mensaje de tirada */
+.cultos-dialogo-tirada .resumen { margin: 0 0 0.5rem; }
+.cultos-chat-tirada header h3 { margin: 0; border: none; }
+.cultos-chat-tirada .subtitulo { font-size: 0.85em; opacity: 0.8; }
+.cultos-chat-tirada .dados {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+.cultos-chat-tirada .dado {
+  width: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  opacity: 0.5;
+}
+.cultos-chat-tirada .dado.destacado { opacity: 1; font-weight: bold; border-width: 2px; }
+.cultos-chat-tirada .desglose { font-size: 0.85em; text-align: center; }
+.cultos-chat-tirada .total { font-size: 1.8em; font-weight: bold; text-align: center; }
+
+/* Críticos y pifias */
+.cultos-chat-tirada .dado.max { color: #2e7d32; }
+.cultos-chat-tirada .dado.min { color: #c62828; }
+.cultos-chat-tirada .especial {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem;
+  border-radius: 4px;
+}
+.cultos-chat-tirada.critico .especial { background: rgba(46, 125, 50, 0.2); color: #2e7d32; }
+.cultos-chat-tirada.pifia .especial { background: rgba(198, 40, 40, 0.2); color: #c62828; }
+
+/* Repeticiones */
+.cultos-chat-tirada .reroll-titulo { font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
+.cultos-chat-tirada.reroll.positivo { border-left: 3px solid #2e7d32; padding-left: 0.4rem; }
+.cultos-chat-tirada.reroll.negativo { border-left: 3px solid #c62828; padding-left: 0.4rem; }
+.cultos-chat-tirada .dados.originales { margin: 0.25rem 0 0; font-size: 0.8em; }
+.cultos-chat-tirada .dados.originales .dado { width: 1.5rem; line-height: 1.5rem; }
+.cultos-chat-tirada .dados.originales .dado.repetido { text-decoration: line-through; opacity: 0.3; }
+.cultos-chat-tirada .coste { text-align: center; font-size: 0.85em; font-style: italic; margin-top: 0.25rem; }
+.cultos-chat-tirada .cultos-rerolls { display: flex; gap: 0.25rem; margin-top: 0.5rem; }
+.cultos-chat-tirada .cultos-rerolls button { flex: 1; font-size: 0.85em; line-height: 1.6; }
+
+.cultos-dialogo-reroll .dados-seleccion { display: flex; justify-content: center; gap: 1rem; margin: 0.5rem 0; }
+.cultos-dialogo-reroll .dado-check { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; cursor: pointer; }
+.cultos-dialogo-reroll .dado { width: 2.2rem; line-height: 2.2rem; text-align: center; border: 2px solid currentColor; border-radius: 4px; font-weight: bold; }
+.cultos-dialogo-reroll .regla, .cultos-dialogo-reroll .aviso { font-size: 0.85em; font-style: italic; }
+
+/* Drama */
+.cultos .contador.drama a { padding: 0 0.2rem; }
+.cultos-chat-drama { padding: 0.2rem 0.4rem; border-left: 3px solid; }
+.cultos-chat-drama.gana { border-color: #2e7d32; }
+.cultos-chat-drama.gasta { border-color: #c62828; }

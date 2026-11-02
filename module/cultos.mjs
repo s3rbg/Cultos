@@ -1,15 +1,20 @@
 /**
  * Cultos Innombrables — punto de entrada del sistema.
  */
+import { CULTOS } from "./config.mjs";
 import { PersonajeData, PnjData } from "./data/actor-data.mjs";
 import { HabilidadData, EquipoData } from "./data/item-data.mjs";
 import { CultosActorSheet } from "./sheets/actor-sheet.mjs";
 import { CultosItemSheet } from "./sheets/item-sheet.mjs";
+import { activarBotonesReroll } from "./dice.mjs";
+import { registrarHooksDrama } from "./drama.mjs";
 
 export const SYSTEM_ID = "cultos-innombrables";
 
 Hooks.once("init", () => {
   console.log(`${SYSTEM_ID} | Inicializando Cultos Innombrables`);
+
+  CONFIG.CULTOS = CULTOS;
 
   // Modelos de datos por tipo de documento
   Object.assign(CONFIG.Actor.dataModels, {
@@ -34,6 +39,9 @@ Hooks.once("init", () => {
     label: "CULTOS.Sheet.Item"
   });
 });
+
+Hooks.on("renderChatMessageHTML", activarBotonesReroll);
+registrarHooksDrama();
 
 Hooks.once("ready", () => {
   console.log(`${SYSTEM_ID} | Listo`);

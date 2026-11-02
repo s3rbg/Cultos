@@ -1,0 +1,31 @@
+<div class="cultos cultos-dialogo-reroll">
+  <p>{{localize "CULTOS.Reroll.EligeDados"}}</p>
+  <div class="dados-seleccion">
+    {{#each dados as |d|}}
+      <label class="dado-check">
+        <input type="checkbox" name="repetir{{d.i}}" />
+        <span class="dado">{{d.valor}}</span>
+      </label>
+    {{/each}}
+  </div>
+
+  {{#if positivo}}
+    <div class="form-group">
+      <label>{{localize "CULTOS.Reroll.Pago"}}</label>
+      <select name="pago">
+        {{#if puedeDrama}}
+          <option value="drama">{{localize "CULTOS.Reroll.PagoDrama"}} ({{drama.value}})</option>
+        {{/if}}
+        {{#each aspectos as |a|}}
+          <option value="{{a.value}}" {{#if a.selected}}selected{{/if}}>{{localize "CULTOS.Reroll.PagoAspecto"}}: {{a.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+    {{#unless puedeDrama}}{{#unless aspectos.length}}
+      <p class="aviso">{{localize "CULTOS.Reroll.SinRecursos"}}</p>
+    {{/unless}}{{/unless}}
+    <p class="regla">{{localize "CULTOS.Reroll.ReglaPositivo"}}</p>
+  {{else}}
+    <p class="regla">{{localize "CULTOS.Reroll.ReglaNegativo"}}</p>
+  {{/if}}
+</div>

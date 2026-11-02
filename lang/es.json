@@ -11,23 +11,154 @@
   },
   "CULTOS": {
     "Crear": "Crear",
+    "Aspecto": "Aspecto",
+    "Gastado": "Gastado",
     "Sheet": {
       "Actor": "Hoja de Cultos Innombrables",
       "Item": "Hoja de objeto de Cultos Innombrables"
     },
+    "Caracteristica": {
+      "fortaleza": "Fortaleza",
+      "fortalezaAbr": "FOR",
+      "reflejos": "Reflejos",
+      "reflejosAbr": "REF",
+      "voluntad": "Voluntad",
+      "voluntadAbr": "VOL",
+      "intelecto": "Intelecto",
+      "intelectoAbr": "INT"
+    },
+    "Habilidad": {
+      "formaFisica": "Forma física",
+      "combate": "Combate",
+      "interaccion": "Interacción",
+      "percepcion": "Percepción",
+      "subterfugio": "Subterfugio",
+      "cultura": "Cultura",
+      "profesion": "Profesión",
+      "ocultismo": "Ocultismo",
+      "arcana": "Arcana"
+    },
     "Actor": {
       "FIELDS": {
-        "salud": { "label": "Salud", "value": { "label": "Actual" }, "max": { "label": "Máximo" } },
-        "concepto": { "label": "Concepto" },
-        "biografia": { "label": "Biografía" }
+        "concepto": {
+          "label": "Concepto"
+        },
+        "caracteristicas": {
+          "label": "Características"
+        },
+        "hitos": {
+          "label": "Hitos"
+        },
+        "complicacion": {
+          "label": "Complicación"
+        },
+        "drama": {
+          "label": "Drama"
+        },
+        "salud": {
+          "label": "Salud",
+          "resistencia": {
+            "label": "Resistencia"
+          },
+          "aguante": {
+            "label": "Aguante"
+          },
+          "secuelas": {
+            "label": "Secuelas"
+          }
+        },
+        "cordura": {
+          "label": "Cordura",
+          "estabilidad": {
+            "label": "Estabilidad mental"
+          },
+          "entereza": {
+            "label": "Entereza"
+          },
+          "degeneracion": {
+            "label": "Degeneración"
+          },
+          "trastornos": {
+            "label": "Trastornos"
+          }
+        },
+        "biografia": {
+          "label": "Biografía"
+        }
       }
     },
     "Item": {
       "FIELDS": {
-        "valor": { "label": "Valor" },
-        "cantidad": { "label": "Cantidad" },
-        "descripcion": { "label": "Descripción" }
+        "cantidad": {
+          "label": "Cantidad"
+        },
+        "descripcion": {
+          "label": "Descripción"
+        },
+        "base": {
+          "label": "Habilidad"
+        },
+        "valor": {
+          "label": "Valor"
+        },
+        "gastado": {
+          "label": "Gastado"
+        },
+        "caracteristica": {
+          "label": "Característica",
+          "hint": "Vacía: se usa la característica por defecto de la habilidad."
+        }
       }
+    },
+    "Habilidades": "Habilidades",
+    "NuevoAspecto": "Nuevo aspecto",
+    "Tirada": {
+      "Tirar": "Tirar",
+      "Caracteristica": "Característica",
+      "SinCaracteristica": "— Sin característica —",
+      "Modificador": "Modificador",
+      "Central": "Central",
+      "TirarAspecto": "Tirar con este aspecto",
+      "Critico": "¡Crítico!",
+      "Pifia": "¡Pifia!",
+      "Dados": "Dados"
+    },
+    "PorDefecto": "Por defecto de la habilidad",
+    "Reroll": {
+      "Positivo": "Repetir a mejor",
+      "Negativo": "Repetir a peor",
+      "Repetir": "Repetir",
+      "EligeDados": "Marca los dados que quieres volver a tirar:",
+      "Pago": "Pagar con",
+      "PagoDrama": "1 punto de Drama",
+      "PagoAspecto": "Agotar aspecto",
+      "ReglaPositivo": "Resultado: el dado mayor, o la suma de los dados iguales si es mayor.",
+      "ReglaNegativo": "Ganas 1 punto de Drama. Resultado: el dado menor; con doble o triple, se resta su valor.",
+      "Doble": "doble {valor}",
+      "Triple": "triple {valor}",
+      "GastaDrama": "Gasta 1 punto de Drama",
+      "GanaDrama": "Gana 1 punto de Drama",
+      "SinDrama": "Sin puntos de Drama (PNJ)",
+      "AgotaAspecto": "Agota el aspecto «{aspecto}»",
+      "NoDrama": "No te quedan puntos de Drama.",
+      "AspectoNoDisponible": "Ese aspecto ya está agotado.",
+      "NingunDado": "Marca al menos un dado para repetir.",
+      "SinPago": "Elige cómo pagar la repetición.",
+      "SinRecursos": "No tienes puntos de Drama ni aspectos disponibles.",
+      "SinPermiso": "Solo el propietario del personaje puede repetir esta tirada."
+    },
+    "NuevaSesion": {
+      "Titulo": "Nueva sesión",
+      "Tooltip": "Nueva sesión: recuperar aspectos agotados",
+      "Confirmar": "¿Recuperar todos los aspectos agotados de este personaje?"
+    },
+    "Drama": {
+      "Sumar": "Sumar 1 punto de Drama",
+      "Restar": "Restar 1 punto de Drama",
+      "Gana": "<strong>{nombre}</strong> gana {n} de Drama ({anterior} → {actual})",
+      "Gasta": "<strong>{nombre}</strong> gasta {n} de Drama ({anterior} → {actual})",
+      "EnMaximo": "Ya tienes el máximo de puntos de Drama.",
+      "SinPuntos": "No te quedan puntos de Drama."
     }
   }
 }

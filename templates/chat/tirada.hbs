@@ -1,0 +1,38 @@
+<div class="cultos cultos-chat-tirada {{especial}} {{#if reroll}}reroll {{#if reroll.positivo}}positivo{{else}}negativo{{/if}}{{/if}}">
+  <header>
+    {{#if reroll}}<div class="reroll-titulo">{{reroll.titulo}}</div>{{/if}}
+    <h3>{{aspectoNombre}}</h3>
+    <span class="subtitulo">{{habilidadLabel}}{{#if caracteristicaLabel}} + {{caracteristicaLabel}}{{/if}}</span>
+  </header>
+
+  {{#if originales}}
+    <ol class="dados originales">
+      {{#each originales as |d|}}
+        <li class="dado {{#if d.repetido}}repetido{{/if}}">{{d.valor}}</li>
+      {{/each}}
+    </ol>
+  {{/if}}
+
+  <ol class="dados">
+    {{#each dadosVista as |d|}}
+      <li class="dado {{#if d.destacado}}destacado{{/if}} {{#if d.max}}max{{/if}} {{#if d.min}}min{{/if}}">{{d.valor}}</li>
+    {{/each}}
+  </ol>
+
+  <div class="desglose">
+    {{localize "CULTOS.Tirada.Dados"}} {{valorDados}}{{#if detalleDados}} ({{detalleDados}}){{/if}}
+    {{#if caracteristicaLabel}} + {{caracteristicaLabel}} {{valorCar}}{{/if}}
+    + {{localize "CULTOS.Aspecto"}} {{valorAspecto}}
+    {{#if modTexto}} {{modTexto}} ({{localize "CULTOS.Tirada.Modificador"}}){{/if}}
+  </div>
+  <div class="total">{{total}}</div>
+  {{#if especialLabel}}<div class="especial">{{especialLabel}}</div>{{/if}}
+  {{#if reroll.coste}}<div class="coste">{{reroll.coste}}</div>{{/if}}
+
+  {{#if repetible}}
+    <div class="cultos-rerolls">
+      <button type="button" data-reroll="positivo"><i class="fas fa-arrow-up"></i> {{localize "CULTOS.Reroll.Positivo"}}</button>
+      <button type="button" data-reroll="negativo"><i class="fas fa-arrow-down"></i> {{localize "CULTOS.Reroll.Negativo"}}</button>
+    </div>
+  {{/if}}
+</div>

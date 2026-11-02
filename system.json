@@ -8,24 +8,54 @@
     "verified": "14"
   },
   "authors": [
-    { "name": "Sergio Blanco" }
+    {
+      "name": "Sergio Blanco"
+    }
   ],
-  "esmodules": ["module/cultos.mjs"],
-  "styles": ["styles/cultos.css"],
+  "esmodules": [
+    "module/cultos.mjs"
+  ],
+  "styles": [
+    "styles/cultos.css"
+  ],
   "languages": [
-    { "lang": "es", "name": "Español", "path": "lang/es.json" }
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
   ],
   "documentTypes": {
     "Actor": {
-      "personaje": { "htmlFields": ["biografia"] },
-      "pnj": { "htmlFields": ["biografia"] }
+      "personaje": {
+        "htmlFields": [
+          "biografia"
+        ]
+      },
+      "pnj": {
+        "htmlFields": [
+          "biografia"
+        ]
+      }
     },
     "Item": {
-      "habilidad": { "htmlFields": ["descripcion"] },
-      "equipo": { "htmlFields": ["descripcion"] }
+      "habilidad": {
+        "htmlFields": [
+          "descripcion"
+        ]
+      },
+      "equipo": {
+        "htmlFields": [
+          "descripcion"
+        ]
+      }
     }
   },
-  "grid": { "distance": 1, "units": "m" },
-  "primaryTokenAttribute": "salud",
-  "socket": false
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "salud.resistencia",
+  "socket": false,
+  "secondaryTokenAttribute": "cordura.estabilidad"
 }

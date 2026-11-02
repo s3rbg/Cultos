@@ -3,34 +3,106 @@
     <img class="profile" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}" />
     <div class="header-fields">
       <input class="nombre" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'Name'}}" />
-      {{#if fields.concepto}}
-        {{formGroup fields.concepto value=system.concepto localize=true}}
+      {{#if esPersonaje}}
+        <input type="text" name="system.concepto" value="{{system.concepto}}" placeholder="{{localize 'CULTOS.Actor.FIELDS.concepto.label'}}" />
+        <div class="contador drama">
+          <label>{{localize "CULTOS.Actor.FIELDS.drama.label"}}</label>
+          <a data-action="dramaMenos" data-tooltip="{{localize 'CULTOS.Drama.Restar'}}"><i class="fas fa-minus"></i></a>
+          <input type="number" name="system.drama.value" value="{{system.drama.value}}" />
+          <a data-action="dramaMas" data-tooltip="{{localize 'CULTOS.Drama.Sumar'}}"><i class="fas fa-plus"></i></a>
+          <span>/</span>
+          <input type="number" name="system.drama.max" value="{{system.drama.max}}" />
+        </div>
       {{/if}}
-      <div class="salud">
-        <label>{{localize "CULTOS.Actor.FIELDS.salud.label"}}</label>
-        <input type="number" name="system.salud.value" value="{{system.salud.value}}" />
-        <span>/</span>
-        <input type="number" name="system.salud.max" value="{{system.salud.max}}" />
-      </div>
     </div>
   </header>
 
-  <section class="items">
+  {{! Características y habilidades: valor · aspecto · gastado }}
+  <section class="rasgos">
     <h3>
-      {{localize "TYPES.Item.habilidad"}}
-      <a data-action="crearItem" data-type="habilidad" data-tooltip="{{localize 'CULTOS.Crear'}}"><i class="fas fa-plus"></i></a>
+      {{localize "CULTOS.Actor.FIELDS.caracteristicas.label"}}
+      <a data-action="nuevaSesion" data-tooltip="{{localize 'CULTOS.NuevaSesion.Tooltip'}}"><i class="fas fa-rotate-left"></i></a>
     </h3>
-    <ul class="item-list">
-      {{#each habilidades as |item|}}
-        <li class="item" data-item-id="{{item.id}}">
-          <span class="item-name">{{item.name}}</span>
-          <span class="item-valor">{{item.system.valor}}</span>
-          <a data-action="editarItem"><i class="fas fa-edit"></i></a>
-          <a data-action="borrarItem"><i class="fas fa-trash"></i></a>
+    <ol class="rasgo-list">
+      {{#each caracteristicas as |r|}}
+        <li class="rasgo {{#if r.gastado}}gastado{{/if}}">
+          <span class="rasgo-nombre">{{localize r.label}}</span>
+          <input class="rasgo-valor" type="number" name="{{r.path}}.valor" value="{{r.valor}}" />
+          <input class="rasgo-aspecto" type="text" name="{{r.path}}.aspecto" value="{{r.aspecto}}" placeholder="{{localize 'CULTOS.Aspecto'}}" />
+          <input type="checkbox" name="{{r.path}}.gastado" {{checked r.gastado}} data-tooltip="{{localize 'CULTOS.Gastado'}}" />
         </li>
       {{/each}}
-    </ul>
+    </ol>
 
+    <h3>{{localize "CULTOS.Habilidades"}}</h3>
+    {{#each habilidades as |h|}}
+      <div class="habilidad-grupo {{#unless h.basica}}no-basica{{/unless}}">
+        <h4>
+          <span>{{localize h.label}}</span>
+          <a data-action="crearItem" data-type="habilidad" data-base="{{h.key}}" data-tooltip="{{localize 'CULTOS.NuevoAspecto'}}"><i class="fas fa-plus"></i></a>
+        </h4>
+        <ol class="rasgo-list">
+          {{#each h.aspectos as |item|}}
+            <li class="rasgo aspecto {{#if item.system.gastado}}gastado{{/if}}" data-item-id="{{item.id}}">
+              <a class="tirar" data-action="tirarAspecto" data-tooltip="{{localize 'CULTOS.Tirada.TirarAspecto'}}"><i class="fas fa-dice-d10"></i></a>
+              <input class="rasgo-aspecto" type="text" data-field="name" value="{{item.name}}" />
+              <input class="rasgo-valor" type="number" data-field="system.valor" value="{{item.system.valor}}" />
+              <input type="checkbox" data-field="system.gastado" {{checked item.system.gastado}} data-tooltip="{{localize 'CULTOS.Gastado'}}" />
+              <a data-action="editarItem"><i class="fas fa-edit"></i></a>
+              <a data-action="borrarItem"><i class="fas fa-trash"></i></a>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+    {{/each}}
+  </section>
+
+  {{#if esPersonaje}}
+    <section class="narrativa">
+      <h3>{{localize "CULTOS.Actor.FIELDS.hitos.label"}}</h3>
+      <ol class="rasgo-list">
+        {{#each hitos as |h|}}
+          <li class="rasgo {{#if h.gastado}}gastado{{/if}}">
+            <input class="rasgo-aspecto" type="text" name="{{h.path}}.texto" value="{{h.texto}}" />
+            <input type="checkbox" name="{{h.path}}.gastado" {{checked h.gastado}} data-tooltip="{{localize 'CULTOS.Gastado'}}" />
+          </li>
+        {{/each}}
+        <li class="rasgo {{#if system.complicacion.gastado}}gastado{{/if}}">
+          <span class="rasgo-nombre">{{localize "CULTOS.Actor.FIELDS.complicacion.label"}}</span>
+          <input class="rasgo-aspecto" type="text" name="system.complicacion.texto" value="{{system.complicacion.texto}}" />
+          <input type="checkbox" name="system.complicacion.gastado" {{checked system.complicacion.gastado}} data-tooltip="{{localize 'CULTOS.Gastado'}}" />
+        </li>
+      </ol>
+    </section>
+  {{/if}}
+
+  <section class="estado">
+    <div class="bloque">
+      <h3>{{localize "CULTOS.Actor.FIELDS.salud.label"}}</h3>
+      <div class="contador">
+        <label>{{localize "CULTOS.Actor.FIELDS.salud.resistencia.label"}}</label>
+        <input type="number" name="system.salud.resistencia.value" value="{{system.salud.resistencia.value}}" />
+        <span>/</span>
+        <input type="number" name="system.salud.resistencia.max" value="{{system.salud.resistencia.max}}" />
+      </div>
+      {{formGroup fields.salud.fields.aguante value=system.salud.aguante localize=true}}
+      {{formGroup fields.salud.fields.secuelas value=system.salud.secuelas localize=true}}
+    </div>
+    <div class="bloque">
+      <h3>{{localize "CULTOS.Actor.FIELDS.cordura.label"}}</h3>
+      <div class="contador">
+        <label>{{localize "CULTOS.Actor.FIELDS.cordura.estabilidad.label"}}</label>
+        <input type="number" name="system.cordura.estabilidad.value" value="{{system.cordura.estabilidad.value}}" />
+        <span>/</span>
+        <input type="number" name="system.cordura.estabilidad.max" value="{{system.cordura.estabilidad.max}}" />
+      </div>
+      {{formGroup fields.cordura.fields.entereza value=system.cordura.entereza localize=true}}
+      {{formGroup fields.cordura.fields.degeneracion value=system.cordura.degeneracion localize=true}}
+      {{formGroup fields.cordura.fields.trastornos value=system.cordura.trastornos localize=true}}
+    </div>
+  </section>
+
+  <section class="items">
     <h3>
       {{localize "TYPES.Item.equipo"}}
       <a data-action="crearItem" data-type="equipo" data-tooltip="{{localize 'CULTOS.Crear'}}"><i class="fas fa-plus"></i></a>

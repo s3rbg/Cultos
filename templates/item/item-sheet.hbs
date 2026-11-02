@@ -3,7 +3,10 @@
     <img class="profile" src="{{item.img}}" data-edit="img" data-action="editImage" alt="{{item.name}}" />
     <div class="header-fields">
       <input class="nombre" type="text" name="name" value="{{item.name}}" />
+      {{#if fields.base}}{{formGroup fields.base value=system.base localize=true}}{{/if}}
+      {{#if fields.caracteristica}}{{formGroup fields.caracteristica value=system.caracteristica localize=true blank=(localize "CULTOS.PorDefecto")}}{{/if}}
       {{#if fields.valor}}{{formGroup fields.valor value=system.valor localize=true}}{{/if}}
+      {{#if fields.gastado}}{{formGroup fields.gastado value=system.gastado localize=true}}{{/if}}
       {{#if fields.cantidad}}{{formGroup fields.cantidad value=system.cantidad localize=true}}{{/if}}
     </div>
   </header>
